@@ -1,0 +1,7 @@
+ENTRE NÓS — SETEMBRO AMARELO
+
+Abra index.html no navegador.
+A área "Coisas para fazer" possui uma página própria para cada atividade:
+desenhos, poemas, artesanato, maquiagem, receitas, melodias, dobraduras e pausa criativa.
+
+Mantenha todos os arquivos na mesma pasta.

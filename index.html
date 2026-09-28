@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cantinho Amarelo | Setembro Amarelo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+  --yellow:#f7c928;
+  --yellow2:#ffe477;
+  --cream:#fffaf0;
+  --dark:#25251f;
+  --brown:#62553c;
+  --white:#fff;
+  --shadow:0 15px 40px rgba(72,59,22,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+button,input,textarea{font:inherit}
+button{cursor:pointer;border:0}
+a{text-decoration:none;color:inherit}
+
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 7%;background:rgba(255,250,240,.9);
+  backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06)
+}
+.logo{font-weight:800;font-size:1.35rem;letter-spacing:-1px}
+.logo span{color:#c59a00}
+nav{display:flex;gap:24px;align-items:center}
+nav a{font-size:.86rem;font-weight:600;position:relative}
+nav a:after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#c59a00;transition:.3s}
+nav a:hover:after{width:100%}
+.menu{display:none;background:none;font-size:1.6rem}
+
+.hero{
+  min-height:100vh;padding:130px 7% 70px;display:grid;
+  grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;
+  background:
+    radial-gradient(circle at 80% 20%,#ffe995 0 13%,transparent 14%),
+    linear-gradient(135deg,#fffaf0 0%,#fff1b5 100%);
+  position:relative;overflow:hidden
+}
+.hero:before,.hero:after{content:"✦";position:absolute;color:#e7bd20;opacity:.35;font-size:5rem}
+.hero:before{left:4%;top:25%;transform:rotate(-20deg)}
+.hero:after{right:5%;bottom:15%;transform:rotate(20deg)}
+.badge{display:inline-block;background:#fff;border:1px solid #eadba7;padding:8px 15px;border-radius:50px;font-size:.75rem;font-weight:700;margin-bottom:22px}
+h1{font-family:"Playfair Display",serif;font-size:clamp(3.2rem,7vw,6.8rem);line-height:.88;letter-spacing:-3px}
+h1 span{color:#d1a700}
+.hero p{margin:25px 0;max-width:590px;line-height:1.8;color:#655b46}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:14px 22px;border-radius:50px;font-weight:700;transition:.25s}
+.btn-primary{background:var(--dark);color:white}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.btn-light{background:white;border:1px solid #e5d9ac}
+.btn-light:hover{background:#fff4be}
+.hero-art{min-height:480px;position:relative;display:flex;align-items:center;justify-content:center}
+.sun{width:330px;height:330px;border-radius:50%;background:#f8d33e;box-shadow:0 25px 70px rgba(214,170,17,.3);position:relative}
+.sun:before{content:"";position:absolute;inset:-35px;border:2px dashed #d9ae20;border-radius:50%;animation:spin 24s linear infinite}
+.flower{position:absolute;font-size:6rem;filter:drop-shadow(0 12px 10px rgba(0,0,0,.1))}
+.flower.one{top:20px;right:20px;transform:rotate(15deg)}
+.flower.two{bottom:20px;left:5px;font-size:5rem;transform:rotate(-18deg)}
+.note{position:absolute;background:white;padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);font-weight:600}
+.note.a{left:0;top:100px;transform:rotate(-5deg)}
+.note.b{right:0;bottom:90px;transform:rotate(4deg)}
+
+section{padding:100px 7%;scroll-margin-top:80px}
+.section-head{text-align:center;max-width:750px;margin:0 auto 50px}
+.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#a57e00}
+h2{font-family:"Playfair Display",serif;font-size:clamp(2.3rem,4vw,4rem);margin:8px 0 15px}
+.section-head p{color:#6d654f;line-height:1.7}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:auto}
+.card{background:white;border-radius:28px;padding:30px;box-shadow:var(--shadow);border:1px solid #eee5c8;transition:.3s}
+.card:hover{transform:translateY(-8px)}
+.icon{width:55px;height:55px;display:grid;place-items:center;border-radius:16px;background:#fff0a8;font-size:1.7rem;margin-bottom:20px}
+.card h3{margin-bottom:10px}
+.card p{color:#706a59;line-height:1.7;font-size:.93rem}
+.card button{margin-top:20px}
+
+.pause{background:#29281f;color:white}
+.pause .section-head p{color:#d7d2c3}
+.breath-box{max-width:650px;margin:auto;background:#37362b;border:1px solid #55503d;border-radius:35px;padding:45px;text-align:center}
+.breath-circle{width:160px;height:160px;margin:20px auto;border-radius:50%;background:#f5cf3c;display:grid;place-items:center;color:#29281f;font-weight:800;font-size:1.2rem;transition:transform 4s ease-in-out;box-shadow:0 0 0 18px rgba(245,207,60,.08)}
+.breath-circle.breathe{transform:scale(1.35)}
+#breathText{font-size:1.1rem;margin:12px}
+.timer{font-size:.9rem;color:#d5ceba}
+
+.quiz-wrap{max-width:800px;margin:auto;background:white;border-radius:30px;padding:35px;box-shadow:var(--shadow)}
+.progress{height:8px;background:#eee8d4;border-radius:20px;overflow:hidden;margin-bottom:28px}
+.progress span{display:block;height:100%;width:0;background:#e5b900;transition:.3s}
+.question{font-size:1.35rem;font-weight:700;margin-bottom:25px;line-height:1.5}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.answer{padding:18px;border:2px solid #eee5c8;border-radius:16px;background:#fffdf7;font-weight:600;transition:.2s}
+.answer:hover{border-color:#e5bd18}
+.answer.correct{background:#eaf7e7;border-color:#7cb66f}
+.answer.wrong{background:#fff0ef;border-color:#d77a70}
+.quiz-info{display:flex;justify-content:space-between;margin-top:22px;color:#777;font-size:.85rem}
+#nextBtn{display:none;margin-top:20px}
+
+.messages{background:#fff3bb}
+.message-form{max-width:800px;margin:0 auto 45px;background:white;padding:30px;border-radius:28px;box-shadow:var(--shadow)}
+textarea,input{width:100%;border:1px solid #ded6bd;background:#fffdf8;border-radius:15px;padding:15px;outline:none}
+textarea{min-height:110px;resize:vertical}
+.form-row{display:flex;gap:12px;margin-top:12px}
+.form-row input{flex:1}
+.mural{columns:3 260px;column-gap:20px;max-width:1100px;margin:auto}
+.mural-card{break-inside:avoid;background:white;border-radius:22px;padding:25px;margin-bottom:20px;box-shadow:0 10px 30px rgba(75,61,17,.1)}
+.mural-card p{line-height:1.7}
+.mural-card small{display:block;margin-top:15px;color:#8c805e;font-weight:600}
+
+.activities{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1100px;margin:auto}
+.activity{display:block;color:var(--dark);text-decoration:none;background:white;min-height:190px;border-radius:25px;padding:25px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.activity:after{content:"✦";position:absolute;right:-5px;bottom:-25px;font-size:7rem;color:#fff0a8}
+.activity span{font-size:2rem}.activity h3{margin:18px 0 8px}.activity p{font-size:.85rem;color:#746b58}
+
+.contact{background:#f4d13e;text-align:center}
+.contact-box{max-width:900px;margin:auto}
+.contact-box p{max-width:700px;margin:0 auto 25px;line-height:1.7}
+footer{padding:35px 7%;background:#29281f;color:#ddd7c7;text-align:center;font-size:.8rem}
+.top{position:fixed;right:20px;bottom:20px;width:48px;height:48px;border-radius:50%;background:#29281f;color:white;display:none;z-index:999}
+
+.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);background:#29281f;color:white;padding:14px 20px;border-radius:50px;opacity:0;pointer-events:none;transition:.3s;z-index:2000}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:850px){
+  header{padding:15px 5%}.menu{display:block}
+  nav{position:absolute;top:70px;left:5%;right:5%;display:none;flex-direction:column;background:white;padding:22px;border-radius:20px;box-shadow:var(--shadow)}
+  nav.open{display:flex}
+  .hero{grid-template-columns:1fr;text-align:center;padding-left:5%;padding-right:5%}
+  .hero p{margin-left:auto;margin-right:auto}.buttons{justify-content:center}.hero-art{min-height:360px}
+  .sun{width:250px;height:250px}.cards,.activities{grid-template-columns:1fr}
+  .answers{grid-template-columns:1fr}.form-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#inicio" class="logo">CANTINHO <span>AMARELO</span> ✦</a>
+  <button class="menu" onclick="toggleMenu()">☰</button>
+  <nav id="nav">
+    <a href="#inicio">Início</a>
+    <a href="#cantinho">Cantinho</a>
+    <a href="#pausa">Uma pausa</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#mensagens">Mensagens</a>
+    <a href="#mural">Nosso mural</a>
+    <a href="#contato">Ajuda</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div>
+    <span class="badge">SETEMBRO AMARELO • UM CANTINHO PARA VOCÊ</span>
+    <h1>Que bom ter você <span>AQUI!</span></h1>
+    <p>Um espaço leve para respirar, se cuidar, descobrir coisas novas e lembrar que seus sentimentos merecem espaço, respeito e escuta.</p>
+    <div class="buttons">
+      <a class="btn btn-primary" href="#cantinho">Explorar cantinho →</a>
+      <a class="btn btn-light" href="#pausa">Preciso de uma pausa</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="sun"></div>
+    <div class="flower one">🌻</div>
+    <div class="flower two">🌼</div>
+    <div class="note a">respire 🌿</div>
+    <div class="note b">você importa ✨</div>
+  </div>
+</section>
+
+<section id="cantinho">
+  <div class="section-head">
+    <div class="eyebrow">Entre nós</div>
+    <h2>O que vamos fazer hoje?</h2>
+    <p>Explore os cantinhos e escolha aquilo que combina com o que você precisa agora.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <div class="icon">🧠</div><h3>Cuide da mente</h3>
+      <p>Pequenas pausas, informação e autocuidado também fazem parte da qualidade de vida.</p>
+      <button class="btn btn-light" onclick="showToast('Você já deu um primeiro passo: parar um pouquinho. 💛')">Uma dica</button>
+    </article>
+    <article class="card">
+      <div class="icon">🌻</div><h3>Descubra algo</h3>
+      <p>Escolha uma atividade criativa: poema, desenho, artesanato, maquiagem ou simplesmente uma ideia nova.</p>
+      <button class="btn btn-light" onclick="atividade()">Me inspire</button>
+    </article>
+    <article class="card">
+      <div class="icon">💬</div><h3>Fale com alguém</h3>
+      <p>Não é necessário encontrar as palavras perfeitas para procurar apoio de alguém de confiança.</p>
+      <a class="btn btn-light" href="#contato">Quero ajuda</a>
+    </article>
+  </div>
+</section>
+
+<section id="pausa" class="respirar-section">
+
+  <div class="respirar-container">
+
+    <span class="respirar-tag">
+      UM PEQUENO INTERVALO
+    </span>
+
+    <h2>
+      Ajude a plantinha a crescer 🌱
+    </h2>
+    
+    <p class="respirar-intro">
+      Cada respiração é um pouco de água.
+      Acompanhe o ritmo e veja até onde ela consegue crescer.
+    </p>
+
+    <!-- JOGO -->
+    <div class="breathing-game">
+
+      <div class="game-header">
+        <span id="roundText">0 de 5 respirações</span>
+      </div>
+
+      <!-- CENÁRIO -->
+      <div class="garden">
+
+        <div class="sun"></div>
+
+        <div class="cloud cloud-1">☁️</div>
+        <div class="cloud cloud-2">☁️</div>
+
+        <div class="ground"></div>
+
+        <!-- PLANTINHA -->
+        <div class="plant" id="plant">
+
+          <div class="flower" id="flower">
+            🌼
+          </div>
+
+          <div class="stem"></div>
+
+          <div class="leaf leaf-left"></div>
+          <div class="leaf leaf-right"></div>
+
+        </div>
+
+      </div>
+
+      <!-- TEXTO -->
+      <div class="breathing-info">
+
+        <h3 id="breathingTitle">
+          Pronto para começar?
+        </h3>
+
+        <p id="breathingText">
+          Quando estiver preparado, comece.
+        </p>
+
+      </div>
+
+      <!-- CÍRCULO -->
+      <div class="breathing-circle" id="breathingCircle">
+
+        <span id="circleText">
+          COMEÇAR
+        </span>
+
+      </div>
+
+      <!-- PROGRESSO -->
+      <div class="progress" id="progress">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+      <!-- BOTÃO -->
+      <button
+        class="start-button"
+        id="startButton"
+        type="button"
+      >
+        Começar pausa
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+
+/* ================================
+   SEÇÃO
+================================ */
+
+.respirar-section {
+  background: #25261f;
+  color: #f8f4e8;
+  padding: 90px 20px;
+}
+
+.respirar-container {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+}
+
+
+/* ================================
+   TEXTOS
+================================ */
+
+.respirar-tag {
+  color: #f5c93d;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.respirar-container h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 6vw, 62px);
+  margin: 10px 0 15px;
+  line-height: 1.05;
+}
+
+.respirar-intro {
+  max-width: 600px;
+  margin: auto;
+  color: #c8c5b8;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+
+/* ================================
+   JOGO
+================================ */
+
+.breathing-game {
+  margin: 45px auto 0;
+  max-width: 620px;
+
+  background: #33342b;
+  border: 1px solid #515247;
+  border-radius: 30px;
+
+  padding: 25px;
+
+  overflow: hidden;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.game-header {
+  display: flex;
+  justify-content: center;
+
+  color: #aaa99c;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  margin-bottom: 15px;
+}
+
+
+/* ================================
+   JARDIM
+================================ */
+
+.garden {
+  position: relative;
+
+  height: 270px;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #393a31 0%,
+      #464531 100%
+    );
+}
+
+
+
+.sun {
+  position: absolute;
+
+  width: 58px;
+  height: 58px;
+
+  background: #f5c93d;
+
+  border-radius: 50%;
+
+  right: 35px;
+  top: 28px;
+
+  opacity: .9;
+}
+
+
+
+.cloud {
+  position: absolute;
+
+  font-size: 35px;
+
+  opacity: .45;
+
+  animation: cloudMove 15s linear infinite;
+}
+
+.cloud-1 {
+  top: 45px;
+  left: 40px;
+}
+
+.cloud-2 {
+  top: 90px;
+  left: 230px;
+
+  font-size: 25px;
+
+  animation-duration: 20s;
+}
+
+@keyframes cloudMove {
+
+  from {
+    transform: translateX(-20px);
+  }
+
+  to {
+    transform: translateX(40px);
+  }
+
+}
+
+
+.ground {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 48px;
+
+  background: #272820;
+
+  border-top: 1px solid #55564a;
+}
+.plant {
+
+  position: absolute;
+
+  bottom: 42px;
+  left: 50%;
+
+  transform:
+    translateX(-50%)
+    scale(.5);
+
+  transform-origin: bottom center;
+
+  transition:
+    transform .8s ease;
+
+  z-index: 3;
+}
+
+.plant.grow-1 {
+  transform:
+    translateX(-50%)
+    scale(.7);
+}
+
+.plant.grow-2 {
+  transform:
+    translateX(-50%)
+    scale(.85);
+}
+
+.plant.grow-3 {
+  transform:
+    translateX(-50%)
+    scale(1);
+}
+
+.plant.grow-4 {
+  transform:
+    translateX(-50%)
+    scale(1.15);
+}
+
+.plant.grow-5 {
+  transform:
+    translateX(-50%)
+    scale(1.3);
+}
+
+.stem {
+
+  width: 9px;
+  height: 75px;
+
+  background: #7d9954;
+
+  border-radius: 10px;
+
+  margin: auto;
+}
+
+
+.leaf {
+
+  position: absolute;
+
+  width: 42px;
+  height: 23px;
+
+  background: #8fa75b;
+
+  border-radius: 100% 0 100% 0;
+
+  top: 40px;
+}
+
+.leaf-left {
+  right: 2px;
+  transform: rotate(25deg);
+}
+
+.leaf-right {
+  left: 2px;
+  transform:
+    scaleX(-1)
+    rotate(25deg);
+}
+
+
+.flower {
+
+  font-size: 45px;
+
+  height: 45px;
+
+  opacity: 0;
+
+  transform: scale(.2);
+
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+}
+
+.plant.finished .flower {
+
+  opacity: 1;
+
+  transform: scale(1);
+
+}
+
+
+.breathing-info {
+  margin-top: 25px;
+}
+
+.breathing-info h3 {
+
+  font-size: 21px;
+
+  margin: 0 0 6px;
+
+}
+
+.breathing-info p {
+
+  margin: 0;
+
+  color: #bdbbad;
+
+  font-size: 14px;
+
+  min-height: 20px;
+
+}
+
+
+.breathing-circle {
+
+  width: 120px;
+  height: 120px;
+
+  margin: 25px auto 20px;
+
+  border-radius: 50%;
+
+  background: #f5c93d;
+
+  color: #25261f;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 800;
+
+  font-size: 13px;
+
+  transition:
+    transform 4s ease-in-out,
+    background .3s ease;
+
+  cursor: default;
+
+}
+
+.breathing-circle.inhale {
+
+  transform: scale(1.35);
+
+}
+
+.breathing-circle.hold {
+
+  transform: scale(1.35);
+
+}
+
+.breathing-circle.exhale {
+
+  transform: scale(.8);
+
+}
+
+
+.progress {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-bottom: 22px;
+
+}
+
+.progress span {
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #55564b;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+
+}
+
+.progress span.active {
+
+  background: #f5c93d;
+
+  transform: scale(1.3);
+
+}
+
+
+.start-button {
+
+  border: none;
+
+  background: #f5c93d;
+
+  color: #25261f;
+
+  font-weight: 800;
+
+  font-size: 14px;
+
+  padding: 14px 27px;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease,
+    background .2s ease;
+
+}
+
+.start-button:hover {
+
+  transform: translateY(-2px);
+
+  background: #ffd84d;
+
+}
+
+.start-button:active {
+
+  transform: scale(.97);
+
+}
+
+
+
+@media (max-width: 600px) {
+
+  .respirar-section {
+    padding: 60px 15px;
+  }
+
+  .breathing-game {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .garden {
+    height: 230px;
+  }
+
+  .breathing-circle {
+    width: 105px;
+    height: 105px;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+const startButton =
+  document.getElementById("startButton");
+
+const breathingCircle =
+  document.getElementById("breathingCircle");
+
+const circleText =
+  document.getElementById("circleText");
+
+const breathingTitle =
+  document.getElementById("breathingTitle");
+
+const breathingText =
+  document.getElementById("breathingText");
+
+const plant =
+  document.getElementById("plant");
+
+const flower =
+  document.getElementById("flower");
+
+const roundText =
+  document.getElementById("roundText");
+
+const progress =
+  document.querySelectorAll("#progress span");
+
+
+let round = 0;
+
+const totalRounds = 5;
+
+let timer;
+
+
+function wait(ms) {
+
+  return new Promise(resolve => {
+
+    timer = setTimeout(resolve, ms);
+
+  });
+
+}
+
+
+function updateProgress() {
+
+  progress.forEach((dot, index) => {
+
+    if (index < round) {
+
+      dot.classList.add("active");
+
+    }
+
+  });
+
+  roundText.textContent =
+    `${round} de ${totalRounds} respirações`;
+
+}
+
+
+async function inhale() {
+
+  breathingCircle.className =
+    "breathing-circle inhale";
+
+  circleText.textContent =
+    "INSPIRE";
+
+  breathingTitle.textContent =
+    "Puxe o ar devagar.";
+
+  breathingText.textContent =
+    "Sinta o ar entrando e acompanhe o círculo.";
+
+  await wait(4000);
+
+}
+
+
+async function hold() {
+
+  breathingCircle.className =
+    "breathing-circle hold";
+
+  circleText.textContent =
+    "SEGURE";
+
+  breathingTitle.textContent =
+    "Fique aqui por um instante.";
+
+  breathingText.textContent =
+    "Não precisa fazer nada. Só permaneça aqui.";
+
+  await wait(1500);
+
+}
+
+
+
+
+async function exhale() {
+
+  breathingCircle.className =
+    "breathing-circle exhale";
+
+  circleText.textContent =
+    "SOLTE";
+
+  breathingTitle.textContent =
+    "Solte o ar aos poucos.";
+
+  breathingText.textContent =
+    "Deixe os ombros relaxarem.";
+
+  await wait(5000);
+
+}
+
+
+function finishGame() {
+
+  breathingCircle.className =
+    "breathing-circle";
+
+  circleText.textContent =
+    "🌼";
+
+  plant.classList.add("finished");
+
+  breathingTitle.textContent =
+    "Você chegou até aqui. 💛";
+
+  breathingText.textContent =
+    "A plantinha floresceu. Agora leve um pouco dessa calma com você.";
+
+  startButton.disabled = false;
+
+  startButton.textContent =
+    "Respirar novamente";
+
+}
+
+
+async function startGame() {
+
+  startButton.disabled = true;
+
+  startButton.textContent =
+    "Respirando...";
+
+  round = 0;
+
+  plant.className = "plant";
+
+  progress.forEach(dot => {
+
+    dot.classList.remove("active");
+
+  });
+
+
+  for (
+    let i = 0;
+    i < totalRounds;
+    i++
+  ) {
+
+    round = i + 1;
+
+    updateProgress();
+
+  
+
+    plant.className =
+      "plant grow-" + round;
+
+
+    await inhale();
+
+    await hold();
+
+    await exhale();
+
+  }
+
+
+  finishGame();
+
+}
+
+startButton.addEventListener(
+  "click",
+  startGame
+);
+
+</script>
+<section id="quiz">
+  <div class="section-head">
+    <div class="eyebrow">Mito ou fato?</div>
+    <h2>Teste seu conhecimento</h2>
+    <p>São 15 questões de verdadeiro ou falso. MITO = falso • FATO = verdadeiro.</p>
+  </div>
+  <div class="quiz-wrap">
+    <div class="progress"><span id="progress"></span></div>
+    <div class="question" id="question"></div>
+    <div class="answers">
+      <button class="answer" onclick="answer(false)">❌ Mito</button>
+      <button class="answer" onclick="answer(true)">✅ Fato</button>
+    </div>
+    <div class="quiz-info"><span id="qNumber"></span><span>Pontos: <b id="score">0</b></span></div>
+    <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Próxima →</button>
+  </div>
+</section>
+
+<section class="messages" id="mensagens">
+  <div class="section-head">
+    <div class="eyebrow">Mensagens</div>
+    <h2>O que você gostaria de ouvir hoje?</h2>
+    <p>Você também pode se inspirar nas mensagens de outras pessoas.</p>
+  </div>
+  <div class="message-form">
+    <textarea id="msg" maxlength="180" placeholder="Deixe uma mensagem para quem precisa..."></textarea>
+    <div class="form-row">
+      <input id="author" maxlength="30" placeholder="Seu nome (opcional)">
+      <button class="btn btn-primary" onclick="addMessage()">Enviar 💛</button>
+    </div>
+  </div>
+  <div class="mural" id="mural">
+    <article class="mural-card"><p>Seus sentimentos merecem ser ouvidos. Se estiver difícil, conversar com alguém de confiança pode ser um bom começo.</p><small>Ass: Melissa</small></article>
+    <article class="mural-card"><p>Você não precisa resolver tudo hoje.</p><small>Ass: Anônimo</small></article>
+    <article class="mural-card"><p>Vá no seu ritmo. Não existe pressa.</p><small>Ass: Júlio</small></article>
+    <article class="mural-card"><p>Você não precisa passar por tudo sozinho.</p><small>Ass: Victor</small></article>
+    <article class="mural-card"><p>Não se cobre tanto. Você está fazendo o que consegue. Permita-se descansar sem culpa.</p><small>Ass: Anônimo</small></article>
+  </div>
+</section>
+
+<section id="mural">
+  <div class="section-head">
+    <div class="eyebrow">Coisas para fazer</div>
+    <h2>O que vamos fazer hoje?</h2>
+    <p>Escolha uma atividade e entre em um cantinho feito especialmente para ela.</p>
+  </div>
+  <div class="activities">
+    <a class="activity" href="desenhos.html"><span>🎨</span><h3>Desenhos</h3><p>Um espaço para soltar a criatividade.</p></a>
+    <a class="activity" href="poemas.html"><span>📝</span><h3>Poemas</h3><p>Escreva e leia pequenos poemas.</p></a>
+    <a class="activity" href="artesanato.html"><span>🧶</span><h3>Artesanato</h3><p>Ideias simples para criar com as mãos.</p></a>
+    <a class="activity" href="maquiagem.html"><span>💄</span><h3>Maquiagem</h3><p>Uma brincadeira criativa com cores.</p></a>
+    <a class="activity" href="receitas.html"><span>🍰</span><h3>Receitas</h3><p>Escolha uma receita simples para fazer.</p></a>
+    <a class="activity" href="melodias.html"><span>🎵</span><h3>Melodias</h3><p>Um cantinho para música e playlists.</p></a>
+    <a class="activity" href="dobraduras.html"><span>🦋</span><h3>Dobraduras</h3><p>Aprenda uma dobradura de flor.</p></a>
+    <a class="activity" href="pausa-criativa.html"><span>☕</span><h3>Pausa criativa</h3><p>Uma atividade tranquila para desacelerar.</p></a>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="contact-box">
+    <div class="eyebrow">Fale conosco</div>
+    <h2>Você não precisa das palavras perfeitas para pedir ajuda.</h2>
+    <p>Se estiver passando por um momento difícil, procure alguém de confiança. No Brasil, o CVV oferece apoio emocional gratuito e sigiloso pelo telefone 188 e por outros canais oficiais.</p>
+    <a class="btn btn-primary" href="https://www.cvv.org.br/" target="_blank">Acessar o site do CVV ↗</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>🌻 ENTRE NÓS • Setembro Amarelo</p>
+  <p style="margin-top:8px">Um projeto educativo sobre acolhimento, bem-estar e saúde mental.</p>
+</footer>
+
+<button class="top" id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const questions=[
+["Falar sobre sentimentos pode ajudar uma pessoa a buscar apoio.",true],
+["Cuidar da saúde mental é importante apenas quando existe um problema grave.",false],
+["Pedir ajuda é um sinal de fraqueza.",false],
+["Ter momentos de descanso pode fazer parte do autocuidado.",true],
+["Cada pessoa pode reagir de uma maneira diferente a situações difíceis.",true],
+["É possível conversar com alguém de confiança quando algo estiver pesado.",true],
+["Ignorar sentimentos difíceis sempre faz com que eles desapareçam.",false],
+["Ouvir alguém com respeito pode ser uma forma de acolhimento.",true],
+["Saúde mental e saúde física podem estar relacionadas.",true],
+["Não existe uma única maneira de cuidar do bem-estar.",true],
+["Todo mundo precisa lidar com os problemas sozinho.",false],
+["Atividades prazerosas podem fazer parte de uma rotina de autocuidado.",true],
+["Buscar orientação profissional pode ser uma opção quando a pessoa precisa.",true],
+["Comparar seus sentimentos com os de outras pessoas resolve o problema.",false],
+["Conversar com alguém de confiança pode ser um primeiro passo.",true]
+];
+let qi=0,score=0,answered=false;
+function loadQuestion(){
+  answered=false;
+  document.getElementById('question').textContent='Questão '+(qi+1)+': '+questions[qi][0];
+  document.getElementById('qNumber').textContent=(qi+1)+' / '+questions.length;
+  document.getElementById('progress').style.width=((qi)/questions.length*100)+'%';
+  document.getElementById('nextBtn').style.display='none';
+  document.querySelectorAll('.answer').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});
+}
+function answer(v){
+ if(answered)return; answered=true;
+ const correct=v===questions[qi][1];
+ if(correct)score++;
+ document.getElementById('score').textContent=score;
+ document.querySelectorAll('.answer').forEach(b=>b.disabled=true);
+ const buttons=document.querySelectorAll('.answer');
+ buttons[v?1:0].classList.add(correct?'correct':'wrong');
+ if(!correct)buttons[questions[qi][1]?1:0].classList.add('correct');
+ document.getElementById('nextBtn').style.display='inline-block';
+}
+function nextQuestion(){
+ if(qi<questions.length-1){qi++;loadQuestion()}
+ else{
+  document.getElementById('question').textContent=`Quiz concluído! Você fez ${score} de ${questions.length} pontos. 🌻`;
+  document.querySelector('.answers').style.display='none';
+  document.getElementById('nextBtn').style.display='none';
+  document.getElementById('qNumber').textContent='Fim';
+  document.getElementById('progress').style.width='100%';
+ }
+}
+loadQuestion();
+
+function toggleMenu(){document.getElementById('nav').classList.toggle('open')}
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+
+let breathTimer;
+function startBreathing(){
+ clearInterval(breathTimer);
+ let seconds=4, phase=0;
+ const circle=document.getElementById('breathCircle'), text=document.getElementById('breathText'), timer=document.getElementById('timer');
+ function tick(){
+   seconds=4; timer.textContent=seconds+'s';
+   if(phase%2===0){text.textContent='INSPIRE lentamente';circle.textContent='INSPIRE';circle.classList.add('breathe')}
+   else{text.textContent='RESPIRE lentamente';circle.textContent='RESPIRE';circle.classList.remove('breathe')}
+   phase++;
+   const count=setInterval(()=>{
+    seconds--;timer.textContent=seconds+'s';
+    if(seconds<=0)clearInterval(count);
+   },1000);
+ }
+ tick(); breathTimer=setInterval(tick,4000);
+ setTimeout(()=>{clearInterval(breathTimer);text.textContent='Pausa concluída. Como você está agora? 💛';circle.textContent='PRONTO';circle.classList.remove('breathe')},20000);
+}
+function showToast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500)}
+function atividade(){
+ const a=['🎨 Faça um desenho livre por 5 minutos.','📝 Escreva um pequeno poema.','🎵 Coloque uma música e escute sem mexer no celular.','☕ Faça uma bebida e aproveite alguns minutos de calma.','🌻 Escreva três coisas pequenas que você aprecia hoje.'];
+ showToast(a[Math.floor(Math.random()*a.length)]);
+}
+function addMessage(){
+ const text=document.getElementById('msg').value.trim();
+ const author=document.getElementById('author').value.trim()||'Anônimo';
+ if(!text){showToast('Escreva uma mensagem primeiro 💛');return}
+ const card=document.createElement('article');card.className='mural-card';
+ const p=document.createElement('p');p.textContent=text;
+ const small=document.createElement('small');small.textContent='Ass: '+author;
+ card.append(p,small);document.getElementById('mural').prepend(card);
+ document.getElementById('msg').value='';document.getElementById('author').value='';
+ showToast('Sua mensagem foi colocada no mural! 🌻');
+}
+window.addEventListener('scroll',()=>document.getElementById('top').style.display=scrollY>500?'grid':'none');
+</script>
+</body>
+</html>

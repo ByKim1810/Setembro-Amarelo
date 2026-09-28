@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Melodias | Entre Nós</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+*{box-sizing:border-box}body{margin:0;font-family:Poppins,sans-serif;background:#fffaf0;color:#29281f}
+header{padding:18px 7%;background:rgba(255,250,240,.94);backdrop-filter:blur(12px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee5c8}
+.logo{font-weight:800;font-size:1.3rem;text-decoration:none;color:#29281f}.logo span{color:#c59a00}
+nav{display:flex;gap:22px;flex-wrap:wrap}nav a{color:#29281f;text-decoration:none;font-size:.85rem;font-weight:600}
+.page{max-width:1050px;margin:auto;padding:70px 7%}.back{display:inline-block;margin-bottom:30px;text-decoration:none;color:#806400;font-weight:700}
+.hero-page{text-align:center;background:linear-gradient(135deg,#fffaf0,#fff0a8);padding:70px 25px;border-radius:35px}
+.emoji{font-size:5rem}.eyebrow{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:#a57e00;font-weight:800}
+h1,h2{font-family:"Playfair Display",serif}h1{font-size:clamp(2.8rem,6vw,5rem);margin:10px 0}h2{font-size:2.4rem}
+p{line-height:1.8;color:#665f4e}.content{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
+.card{background:white;padding:28px;border-radius:25px;box-shadow:0 15px 40px rgba(72,59,22,.1);border:1px solid #eee5c8}
+.btn{display:inline-block;padding:13px 20px;border-radius:50px;background:#29281f;color:#fff;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+textarea,input{width:100%;box-sizing:border-box;padding:14px;border:1px solid #ded6bd;border-radius:15px;background:#fffdf8;margin:8px 0;font:inherit}
+textarea{min-height:130px;resize:vertical}.poem{font-family:"Playfair Display",serif;font-size:1.2rem;line-height:2;background:#fff3bb}
+ul{line-height:2;color:#665f4e}.tip{background:#fff3bb;padding:18px;border-radius:18px}
+.paint{min-height:180px;border-radius:20px;background:repeating-linear-gradient(45deg,#ffe477 0 18px,#fffaf0 18px 36px);display:grid;place-items:center;font-size:4rem}
+@media(max-width:700px){nav{gap:10px}.content{grid-template-columns:1fr}}
+
+/* Música de fundo */
+.music-control{position:fixed;right:20px;bottom:20px;z-index:3000;display:flex;align-items:center;gap:8px;background:#29281f;color:#fff;border:2px solid #f5cf3c;border-radius:50px;padding:10px 15px;font:600 13px Poppins,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.18);cursor:pointer;transition:.25s}.music-control:hover{transform:translateY(-2px)}.music-control .music-icon{font-size:18px}.music-control.on{background:#f5cf3c;color:#29281f}.music-volume{width:70px;accent-color:#f5cf3c}@media(max-width:600px){.music-control{right:12px;bottom:12px}.music-volume{display:none}}
+</style></head><body>
+<header><a class="logo" href="index.html">ENTRE <span>NÓS</span> ✦</a><nav><a href="index.html">Início</a><a href="index.html#cantinho">Cantinho</a><a href="index.html#quiz">Quiz</a><a href="index.html#mensagens">Mensagens</a><a href="index.html#contato">Ajuda</a></nav></header>
+<main class="page"><a class="back" href="index.html#mural">← Voltar para Coisas para fazer</a>
+<div class="hero-page"><div class="emoji">🎵</div><div class="eyebrow">Coisas para fazer</div><h1>Melodias</h1><p>Coloque uma música e respire</p></div>
+<div class="content"><div class="card"><h2>🎵 Música de fundo</h2><p>Use o botão no canto da tela para ligar ou pausar uma melodia suave enquanto você navega pelo projeto.</p><button class="btn" onclick="document.getElementById('musicControl').click()">Ligar / pausar música</button></div><div class="card"><h2>Minha playlist</h2><input id="songInput" placeholder="Nome da música"><button class="btn" onclick="addSong()">Adicionar</button><ul id="playlist" style="margin-top:15px"></ul></div></div><script>function addSong(){const i=document.getElementById('songInput'),l=document.getElementById('playlist');if(i.value.trim()){const li=document.createElement('li');li.textContent='🎶 '+i.value.trim();l.appendChild(li);i.value='';}}</script></main>
+<footer style="padding:30px;text-align:center;background:#29281f;color:#ddd7c7">🌻 ENTRE NÓS • Setembro Amarelo</footer>
+<audio id="bgMusic" loop preload="auto"><source src="assets/musica-fundo.wav" type="audio/wav"></audio>
+<button class="music-control" id="musicControl" type="button" aria-label="Ativar música de fundo"><span class="music-icon">🎵</span><span id="musicLabel">Ativar música</span><input class="music-volume" id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.32" aria-label="Volume"></button>
+<script>
+(function(){
+ const audio=document.getElementById('bgMusic'), btn=document.getElementById('musicControl'), label=document.getElementById('musicLabel'), vol=document.getElementById('musicVolume');
+ if(!audio||!btn)return;
+ audio.volume=Number(localStorage.getItem('entreNosVolume')||'0.32');
+ vol.value=audio.volume;
+ function update(){ const on=!audio.paused; btn.classList.toggle('on',on); label.textContent=on?'Música ligada':'Ativar música'; }
+ async function start(){ try{ await audio.play(); localStorage.setItem('entreNosMusic','on'); update(); }catch(e){ label.textContent='Clique para ouvir'; } }
+ btn.addEventListener('click',function(e){ if(e.target===vol)return; if(audio.paused) start(); else {audio.pause();localStorage.setItem('entreNosMusic','off');update();} });
+ vol.addEventListener('input',function(e){audio.volume=Number(e.target.value);localStorage.setItem('entreNosVolume',audio.volume); if(audio.paused && audio.volume>0) start();});
+ document.addEventListener('pointerdown',function(){ if(localStorage.getItem('entreNosMusic')!=='off') start(); },{once:true});
+ if(localStorage.getItem('entreNosMusic')!=='off') start(); else update();
+})();
+</script>
+</body></html>
